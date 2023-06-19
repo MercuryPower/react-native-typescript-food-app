@@ -8,8 +8,13 @@ export const COLORS = {
 }
 
 export const SIZES = {
-    base:12,
-    font:14,
+    font:16,
+    small:12,
+
+    h1:30,
+    h2:22,
+    h3:16,
+    h4:14,
 }
 
 const appTheme = {COLORS, SIZES}
