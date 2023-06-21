@@ -3,7 +3,66 @@ import {Image, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpaci
 import {COLORS, SIZES} from "../../constants";
 import {auth} from "../../data/firebase";
 import {useNavigation} from "@react-navigation/native";
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../../App";
 
+
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+
+
+const LoginScreen = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const navigation = useNavigation<LoginScreenNavigationProp>();
+
+
+    const handleSignUp = () => {
+       auth
+           .createUserWithEmailAndPassword(email, password)
+           .then(userCredentials => {
+               const user = userCredentials.user;
+           })
+           .catch(error => alert(error.message))
+    }
+
+    useEffect(() => {
+        return auth.onAuthStateChanged(user => {
+            if (user) {
+                navigation.navigate('Home');
+                setPassword('')
+                setEmail('')
+            }
+        });
+    }, [])
+    const handleLogin = () =>{
+        auth
+            .signInWithEmailAndPassword(email, password)
+            .then(userCredentials => {
+                const user = userCredentials.user;
+            })
+            .catch(error => alert(error.message))
+    }
+
+    return (
+        <KeyboardAvoidingView style={styles.container} behavior='height'>
+            <Image style={styles.logo} source={{uri: 'https://inciajandekgyar.hu/image/designers/9d90c9199c1e661f7970ad0779bb794b1619676155.png'}} />
+            <Text style={styles.title}>Авторизация / Регистрация</Text>
+            <View style={styles.inputContainer}>
+                <TextInput style={styles.input} placeholder={'Email'} value={email} onChangeText={text => {setEmail(text)}} ></TextInput>
+                <TextInput style={styles.input} placeholder={'Password'} value={password} onChangeText={text => {setPassword(text)}} secureTextEntry></TextInput>
+            </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity onPress={handleLogin} style={[styles.button, styles.buttonOutline]}>
+                    <Text style={styles.buttonOutlineText}>Войти</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={handleSignUp} style={styles.button}>
+                    <Text style={styles.buttonText}>Регистрация</Text>
+                </TouchableOpacity>
+            </View>
+        </KeyboardAvoidingView>
+    );
+};
 const styles = StyleSheet.create({
     container:{
         flex:1,
@@ -60,56 +119,5 @@ const styles = StyleSheet.create({
         height:90,
     }
 })
-const LoginScreen = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    const navigation = useNavigation();
-
-
-    const handleSignUp = () => {
-       auth
-           .createUserWithEmailAndPassword(email, password)
-           .then(userCredentials => {
-               const user = userCredentials.user;
-           })
-           .catch(error => alert(error.message))
-    }
-
-    useEffect(() => {
-        return auth.onAuthStateChanged(user => {
-            if (user) {
-                navigation.navigate('Home');
-            }
-        });
-    }, [])
-    const handleLogin = () =>{
-        auth
-            .signInWithEmailAndPassword(email, password)
-            .then(userCredentials => {
-                const user = userCredentials.user;
-            })
-            .catch(error => alert(error.message))
-    }
-
-    return (
-        <KeyboardAvoidingView style={styles.container} behavior='height'>
-            <Image style={styles.logo} source={{uri: 'https://inciajandekgyar.hu/image/designers/9d90c9199c1e661f7970ad0779bb794b1619676155.png'}} />
-            <Text style={styles.title}>Авторизация / Регистрация</Text>
-            <View style={styles.inputContainer}>
-                <TextInput style={styles.input} placeholder={'Email'} value={email} onChangeText={text => {setEmail(text)}} ></TextInput>
-                <TextInput style={styles.input} placeholder={'Password'} value={password} onChangeText={text => {setPassword(text)}} secureTextEntry></TextInput>
-            </View>
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={handleLogin} style={[styles.button, styles.buttonOutline]}>
-                    <Text style={styles.buttonOutlineText}>Войти</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={handleSignUp} style={styles.button}>
-                    <Text style={styles.buttonText}>Регистрация</Text>
-                </TouchableOpacity>
-            </View>
-        </KeyboardAvoidingView>
-    );
-};
 
 export default LoginScreen;
