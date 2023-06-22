@@ -5,8 +5,9 @@ import {ScrollView, StyleSheet, View} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {auth} from "../../data/firebase";
 import {StackNavigationProp} from "@react-navigation/stack";
-import {RootStackParamList} from "../../App";
+import {RootStackParamList} from "../../StackNavigator";
 import Popular from "../components/Popular";
+import Location from "../components/Location";
 
 
 export type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
@@ -17,6 +18,7 @@ const HomeScreen = () => {
             <Header />
             <Categories />
             <Popular />
+            <Location />
         </ScrollView>
     );
 };

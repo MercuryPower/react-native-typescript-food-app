@@ -8,12 +8,6 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import LoginScreen from "./src/screens/LoginScreen";
 import StackNavigator from "./StackNavigator";
 
-
-export type RootStackParamList = {
-    Home: undefined;
-    Login: undefined;
-}
-
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (

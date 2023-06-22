@@ -4,7 +4,7 @@ import {COLORS, SIZES} from "../../constants";
 import {auth} from "../../data/firebase";
 import {useNavigation} from "@react-navigation/native";
 import {StackNavigationProp} from "@react-navigation/stack";
-import {RootStackParamList} from "../../App";
+import {RootStackParamList} from "../../StackNavigator";
 
 
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
@@ -63,7 +63,7 @@ const LoginScreen = () => {
         </KeyboardAvoidingView>
     );
 };
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     container:{
         flex:1,
         justifyContent:'center',
