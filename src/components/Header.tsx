@@ -63,13 +63,13 @@ const Header: React.FC<HeaderProps>= () => {
                 {isUserAuthenticated ? (
                     <>
                     <Text numberOfLines={1} ellipsizeMode="tail">{truncateText(auth.currentUser?.email, 6)}</Text>
-                        <TouchableOpacity onPress={() => {handleSignOut()}}>
-                            <Text style={{marginTop:10, padding:5,borderRadius:10, borderWidth:1, }}>Выйти</Text>
+                        <TouchableOpacity  style={{marginTop:5, padding: 5,borderRadius:10,  borderWidth:1, }} onPress={() => {handleSignOut()}}>
+                            <Text>Sign Out</Text>
                         </TouchableOpacity>
                     </>
                     ) : (
-                    <TouchableOpacity onPress={() => {handleSignIn()}}>
-                        <Text style={{marginTop:10, padding:5,borderRadius:10, borderWidth:1, }}>Войти</Text>
+                    <TouchableOpacity style={{marginTop:5, padding: 5,borderRadius:10,  borderWidth:1, }} onPress={() => {handleSignIn()}}>
+                        <Text>Sign In</Text>
                     </TouchableOpacity>
                     )}
             </View>
