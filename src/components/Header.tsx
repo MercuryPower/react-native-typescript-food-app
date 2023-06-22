@@ -4,13 +4,15 @@ import {SIZES, COLORS} from "../../constants";
 import {auth} from "../../data/firebase";
 import firebase from "firebase/compat";
 import {useNavigation} from "@react-navigation/native";
-import {HomeScreenNavigationProp} from "../screens/HomeScreen";
+import {globalStyles, HomeScreenNavigationProp} from "../screens/HomeScreen";
 
 interface HeaderProps{
     auth?: firebase.auth.Auth
 }
 
 const Header: React.FC<HeaderProps>= () => {
+    const [nightMode, setNightMode] = useState(false) // Попробовать допилить NightMode
+    const imageNightSource = nightMode ? require('../../assets/toogle1.png') : require('../../assets/toogle2.png')
 
     const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 
@@ -49,7 +51,7 @@ const Header: React.FC<HeaderProps>= () => {
         navigation.navigate('Personal')
     }
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, ]}>
             <View style={styles.brend}>
                 <TouchableOpacity onPress={() => {Linking.openURL('https://www.kfc.ru/').catch(error => alert(error.message))}}>
                     <Image style={styles.logo} source={{uri: 'https://inciajandekgyar.hu/image/designers/9d90c9199c1e661f7970ad0779bb794b1619676155.png'}} />
@@ -60,9 +62,14 @@ const Header: React.FC<HeaderProps>= () => {
                 </View>
             </View>
             <View style={{marginRight:25, alignItems:'center', justifyContent:'center'}}>
-                <TouchableOpacity onPress={() => {handleUserInfo()}}>
-                    <Image style={styles.user} source={require('../../assets/user.png')} />
-                </TouchableOpacity>
+                <View style={{flexDirection:'row', alignItems:'center'}}>
+                    <TouchableOpacity onPress={() => {handleUserInfo()}}>
+                        <Image style={styles.user} source={require('../../assets/user.png')} />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => setNightMode(previousState => !previousState)}>
+                            <Image style={{width:39, height:20}} source={imageNightSource} />
+                    </TouchableOpacity>
+                </View>
                 {isUserAuthenticated ? (
                     <>
                     <Text numberOfLines={1} ellipsizeMode="tail">{truncateText(auth.currentUser?.email, 6)}</Text>

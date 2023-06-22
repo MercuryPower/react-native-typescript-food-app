@@ -15,7 +15,7 @@ const Location = () => {
         <View style={{justifyContent:'center', alignItems:'center',borderTopWidth:1}}>
             <Text style={{fontWeight:'bold', fontSize:SIZES.h1, marginTop:10}}>OUR</Text>
             <Text style={{fontWeight:'bold', fontSize:SIZES.h1, padding:2, marginBottom:20, color:COLORS.white, backgroundColor:COLORS.primary}}> BFC RESTAURANTS </Text>
-            <MapView style={{width:500, height:500,justifyContent:'center', alignItems:'center', paddingHorizontal:10}} region={mapRegion}>
+            <MapView style={{width:'100%', height:500,justifyContent:'center', alignItems:'center', paddingHorizontal:10, marginBottom:50}} region={mapRegion}>
                 {cities.map((city) => (
                     <Marker key={city.title} coordinate={city.coordinates} title={city.title + ' BFC Restaurant'}>
                         <View>
