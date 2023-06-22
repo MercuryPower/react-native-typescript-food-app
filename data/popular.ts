@@ -15,37 +15,37 @@ export const popular: PopularProps[] = [
     },
     {
         id: 2,
-        image: 'https://s82079.cdn.ngenix.net/295x0/30laitb2wbo76jscvyk3ut4j2tcc',
+        image: 'https://world-ru.openfoodfacts.org/images/products/200/000/011/6999/front_fr.4.full.jpg',
         title: 'Chicken Tenders (6 Pc)',
         price: 6.99
     },
     {
         id: 3,
-        image: 'https://hips.hearstapps.com/hmg-prod/images/screen-shot-2020-04-03-at-12-46-51-pm-1585932425.png',
+        image: 'https://s82079.cdn.ngenix.net/295x0/sdup7ya7352fypyka3ukyevma2t9',
         title: '3 Pc. Basket',
         price: 5.49
     },
     {
         id: 4,
-        image:'https://kfcbd.com/storage/products/hY1G0O2T5uibNB11nmmeZQJgs.jpg',
+        image:'https://kfs-menu.ru/images/menu/moy-basket-s-nozhkami.jpg',
         title:'8 Pc. Chicken Only',
         price: 4.99
     },
     {
         id: 5,
-        image:'https://images.ctfassets.net/h7j9u4fil4a3/3xrr3lNTMtftCQfyhYmnC/412d01d91b19cb3ae3699a06e696beba/Kentucky_Fried_Chicken_Nuggets.jpg?w=1201&h=668&fl=progressive&q=50&fm=jpg',
+        image:'https://kfs-menu.ru/images/menu/basket-ostryy-krylyshki-i-nozhki.b2lsn9pxp1hhwzg3n991kvzl4bgp',
         title:'16 Pc. Chicken Only',
         price: 24.99
     },
     {
         id: 6,
-        image:'https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F200522115738-20200522-kfc-chicken-sandwich.jpg',
-        title:'Kentucky Fried Wings',
-        price: 9.99
+        image:'https://kfc-menu.co.uk/wp-content/uploads/2023/04/20-hot-wings-kfc.jpg',
+        title:'20 Pc. KFC Wings',
+        price: 23.99
     },
     {
         id: 7,
-        image:'https://hips.hearstapps.com/hmg-prod/images/kfc-sauce-1602099564.jpg',
+        image:'https://d1ralsognjng37.cloudfront.net/295e55dd-19d9-4635-9c08-12ff43996c9c.jpeg',
         title:'Popcorn Nuggets',
         price: 3.99
     },
